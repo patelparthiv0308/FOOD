@@ -250,11 +250,11 @@ async function saveOrderToDB(orderData) {
 }
 
 // Global window load
-window.onload = function() {
+window.addEventListener("load", () => {
   updateCartUI();
   if (document.getElementById("cart-container")) loadCartPage();
   if (document.getElementById("live-cart-items")) loadLiveCart();
-};
+});
 
 // --- Search Filter Logic ---
 function filterMenu() {

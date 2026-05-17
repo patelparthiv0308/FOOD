@@ -149,7 +149,8 @@
     window.location.href = "order-success.html";
   }
 
-  window.onload = loadTotal;
+  window.addEventListener("load", loadTotal);
+  document.addEventListener("DOMContentLoaded", loadTotal);
 </script>
 
 </body>
