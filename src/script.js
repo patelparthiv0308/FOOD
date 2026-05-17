@@ -248,6 +248,7 @@ async function saveOrderToDB(orderData) {
   
   return true;
 }
+window.saveOrderToDB = saveOrderToDB;
 
 // Global window load
 window.addEventListener("load", () => {
