@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Burger Menu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="src/burger.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+
+<body class="bg-dark text-white">
+
+
+<div class="container py-5">
+  <div class="row justify-content-center">
+
+    <!-- MENU ITEMS (GRID LAYOUT) -->
+    <div class="col-md-12">
+      <!-- Top Navigation Category Switcher -->
+      <div class="text-center mb-4 top-nav-wrapper">
+        <div class="d-flex justify-content-center align-items-center gap-2 flex-wrap mb-4">
+          <a href="index.html" class="btn btn-home px-3 py-2 fw-bold shadow">🏠 Home</a>
+          <a href="pizza.html" class="btn btn-outline-warning px-3 py-2 fw-bold shadow">🍕 Pizza Kingdom</a>
+          <a href="pasta.html" class="btn btn-outline-warning px-3 py-2 fw-bold shadow">🍝 Pasta Palace</a>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-container mx-auto position-relative" style="max-width: 500px;">
+          <div class="input-group">
+            <span class="input-group-text bg-transparent border-warning text-warning"><i class="bi bi-search"></i></span>
+            <input type="text" id="menuSearch" class="form-control bg-transparent border-warning text-white" placeholder="Search for your favorite burger..." onkeyup="filterMenu()">
+          </div>
+          <div id="searchResults" class="search-results shadow-lg"></div>
+        </div>
+      </div>
+
+      <h2 class="mb-5 text-center text-warning fw-bold display-4">🍔 Our Special Burgers</h2>
+
+      <div class="row g-4">
+        <!-- Burger Item 1 -->
+        <div class="col-md-4">
+          <div class="card pizza-card h-100 shadow-lg">
+            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=300&fit=crop" class="card-img-top" alt="Cheese Burger">
+            <div class="card-body text-center">
+              <h5 class="card-title text-white fw-bold mb-2">Classic Cheese Burger</h5>
+              <p class="card-text text-warning fs-5">₹149</p>
+              <button onclick="addToCart('Classic Cheese Burger', 149, 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=300&fit=crop')" class="btn btn-danger w-100 fw-bold">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Burger Item 2 -->
+        <div class="col-md-4">
+          <div class="card pizza-card h-100 shadow-lg">
+            <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?w=400&h=300&fit=crop" class="card-img-top" alt="Aloo Tikki Burger">
+            <div class="card-body text-center">
+              <h5 class="card-title text-white fw-bold mb-2">Aloo Tikki Burger</h5>
+              <p class="card-text text-warning fs-5">₹99</p>
+              <button onclick="addToCart('Aloo Tikki Burger', 99, 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=400&h=300&fit=crop')" class="btn btn-danger w-100 fw-bold">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Burger Item 3 -->
+        <div class="col-md-4">
+          <div class="card pizza-card h-100 shadow-lg">
+            <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=400&h=300&fit=crop" class="card-img-top" alt="Maharaja Veg Burger">
+            <div class="card-body text-center">
+              <h5 class="card-title text-white fw-bold mb-2">Maharaja Veg Burger</h5>
+              <p class="card-text text-warning fs-5">₹249</p>
+              <button onclick="addToCart('Maharaja Veg Burger', 249, 'https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=400&h=300&fit=crop')" class="btn btn-danger w-100 fw-bold">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Burger Item 4 -->
+        <div class="col-md-4">
+          <div class="card pizza-card h-100 shadow-lg">
+            <img src="https://images.unsplash.com/photo-1520072959219-c595dc870360?w=400&h=300&fit=crop" class="card-img-top" alt="Mushroom Veggie Burger">
+            <div class="card-body text-center">
+              <h5 class="card-title text-white fw-bold mb-2">Mushroom Veggie Burger</h5>
+              <p class="card-text text-warning fs-5">₹189</p>
+              <button onclick="addToCart('Mushroom Veggie Burger', 189, 'https://images.unsplash.com/photo-1520072959219-c595dc870360?w=400&h=300&fit=crop')" class="btn btn-danger w-100 fw-bold">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Burger Item 5 -->
+        <div class="col-md-4">
+          <div class="card pizza-card h-100 shadow-lg">
+            <img src="https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=400&h=300&fit=crop" class="card-img-top" alt="Tandoori Paneer Burger">
+            <div class="card-body text-center">
+              <h5 class="card-title text-white fw-bold mb-2">Tandoori Paneer Burger</h5>
+              <p class="card-text text-warning fs-5">₹219</p>
+              <button onclick="addToCart('Tandoori Paneer Burger', 219, 'https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=400&h=300&fit=crop')" class="btn btn-danger w-100 fw-bold">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Burger Item 6 -->
+        <div class="col-md-4">
+          <div class="card pizza-card h-100 shadow-lg">
+            <img src="https://images.unsplash.com/photo-1610440042657-6dd2c0999c42?w=400&h=300&fit=crop" class="card-img-top" alt="Spicy Corn & Cheese">
+            <div class="card-body text-center">
+              <h5 class="card-title text-white fw-bold mb-2">Spicy Corn & Cheese</h5>
+              <p class="card-text text-warning fs-5">₹179</p>
+              <button onclick="addToCart('Spicy Corn & Cheese', 179, 'https://images.unsplash.com/photo-1610440042657-6dd2c0999c42?w=400&h=300&fit=crop')" class="btn btn-danger w-100 fw-bold">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Burger Item 7 -->
+        <div class="col-md-4">
+          <div class="card pizza-card h-100 shadow-lg">
+            <img src="https://images.unsplash.com/photo-1525059696034-4967a8e1dca2?w=400&h=300&fit=crop" class="card-img-top" alt="Garden Fresh Veggie">
+            <div class="card-body text-center">
+              <h5 class="card-title text-white fw-bold mb-2">Garden Fresh Veggie</h5>
+              <p class="card-text text-warning fs-5">₹159</p>
+              <button onclick="addToCart('Garden Fresh Veggie', 159, 'https://images.unsplash.com/photo-1525059696034-4967a8e1dca2?w=400&h=300&fit=crop')" class="btn btn-danger w-100 fw-bold">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Burger Item 8 -->
+        <div class="col-md-4">
+          <div class="card pizza-card h-100 shadow-lg">
+            <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=400&h=300&fit=crop" class="card-img-top" alt="Soya Supreme Burger">
+            <div class="card-body text-center">
+              <h5 class="card-title text-white fw-bold mb-2">Soya Supreme Burger</h5>
+              <p class="card-text text-warning fs-5">₹169</p>
+              <button onclick="addToCart('Soya Supreme Burger', 169, 'https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?w=400&h=300&fit=crop')" class="btn btn-danger w-100 fw-bold">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Burger Item 9 -->
+        <div class="col-md-4">
+          <div class="card pizza-card h-100 shadow-lg">
+            <img src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=400&h=300&fit=crop" class="card-img-top" alt="Grilled Veggie Patty">
+            <div class="card-body text-center">
+              <h5 class="card-title text-white fw-bold mb-2">Grilled Veggie Patty</h5>
+              <p class="card-text text-warning fs-5">₹139</p>
+              <button onclick="addToCart('Grilled Veggie Patty', 139, 'https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=400&h=300&fit=crop')" class="btn btn-danger w-100 fw-bold">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Burger Item 10 -->
+        <div class="col-md-4">
+          <div class="card pizza-card h-100 shadow-lg">
+            <img src="https://images.unsplash.com/photo-1596662951482-0c4ba74a6df6?w=400&h=300&fit=crop" class="card-img-top" alt="Crispy Masala Burger">
+            <div class="card-body text-center">
+              <h5 class="card-title text-white fw-bold mb-2">Crispy Masala Burger</h5>
+              <p class="card-text text-warning fs-5">₹119</p>
+              <button onclick="addToCart('Crispy Masala Burger', 119, 'https://images.unsplash.com/photo-1596662951482-0c4ba74a6df6?w=400&h=300&fit=crop')" class="btn btn-danger w-100 fw-bold">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Burger Item 11 -->
+        <div class="col-md-4">
+          <div class="card pizza-card h-100 shadow-lg">
+            <img src="https://images.unsplash.com/photo-1512152272829-e3139592d56f?w=400&h=300&fit=crop" class="card-img-top" alt="Veggie Overload Burger">
+            <div class="card-body text-center">
+              <h5 class="card-title text-white fw-bold mb-2">Veggie Overload Burger</h5>
+              <p class="card-text text-warning fs-5">₹199</p>
+              <button onclick="addToCart('Veggie Overload Burger', 199, 'https://images.unsplash.com/photo-1512152272829-e3139592d56f?w=400&h=300&fit=crop')" class="btn btn-danger w-100 fw-bold">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Burger Item 12 -->
+        <div class="col-md-4">
+          <div class="card pizza-card h-100 shadow-lg">
+            <img src="https://images.unsplash.com/photo-1534790561517-41e57c43d530?w=400&h=300&fit=crop" class="card-img-top" alt="Cheesy Jalapeno Veg">
+            <div class="card-body text-center">
+              <h5 class="card-title text-white fw-bold mb-2">Cheesy Jalapeno Veg</h5>
+              <p class="card-text text-warning fs-5">₹189</p>
+              <button onclick="addToCart('Cheesy Jalapeno Veg', 189, 'https://images.unsplash.com/photo-1534790561517-41e57c43d530?w=400&h=300&fit=crop')" class="btn btn-danger w-100 fw-bold">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Navigation Options -->
+    <div class="col-md-10 mt-5">
+      <div class="card bg-dark border-warning p-4 text-center shadow-lg">
+        <h4 class="text-warning mb-3">Done with your selection?</h4>
+        <div class="d-flex flex-wrap justify-content-center gap-3">
+          <a href="cart.html" class="btn btn-outline-light btn-lg px-4">🛒 View Full Cart</a>
+          <a href="payment.html" class="btn btn-success btn-lg px-5 fw-bold">💳 Proceed to Payment</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="src/script.js"></script>
+</body>
+</html>

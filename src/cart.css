@@ -1,0 +1,92 @@
+/* Cart Page Styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
+              url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1600&h=900&fit=crop') no-repeat center center fixed !important;
+  background-size: cover !important;
+  color: #fff;
+}
+
+.cart-header {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 40px 0;
+  border-radius: 0 0 30px 30px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cart-card {
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  transition: 0.3s;
+}
+
+.cart-card:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: #ffc107;
+  transform: translateY(-5px);
+}
+
+.cart-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.summary-card {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  color: #fff;
+}
+
+.summary-card span, .summary-card h5 {
+  color: #fff;
+}
+
+.text-success {
+  color: #2ecc71 !important;
+  font-weight: bold;
+}
+
+.btn-checkout {
+  background: linear-gradient(to right, #ffc107, #ff9800);
+  color: #000;
+  font-weight: 700;
+  padding: 12px 30px;
+  border-radius: 30px;
+  border: none;
+  box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
+}
+
+.btn-checkout:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 20px rgba(255, 193, 7, 0.5);
+}
+
+/* --- Responsive Media Queries --- */
+@media (max-width: 991.98px) {
+  .sticky-top {
+    position: static !important;
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .cart-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .cart-img {
+    width: 60px;
+    height: 60px;
+  }
+}

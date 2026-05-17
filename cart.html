@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Your Cart | Royal Bite</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/cart.css">
+</head>
+<body>
+
+<div class="cart-header text-center">
+  <h1 class="fw-bold">🛒 Your Shopping Cart</h1>
+  <p class="mb-0">Delicious food is just one step away!</p>
+</div>
+
+<div class="container py-4">
+  <div class="row">
+    <div class="col-lg-8" id="cart-container">
+      <!-- Items will be injected here -->
+    </div>
+
+    <div class="col-lg-4">
+      <div class="card summary-card p-4 shadow-sm sticky-top" style="top: 20px;">
+        <h4 class="mb-4 text-warning fw-bold">Order Summary</h4>
+        <div class="d-flex justify-content-between mb-2">
+          <span>Subtotal</span>
+          <span id="summary-subtotal">₹0</span>
+        </div>
+        <div class="d-flex justify-content-between mb-2 text-success">
+          <span>Delivery</span>
+          <span>FREE</span>
+        </div>
+        <hr class="bg-secondary">
+        <div class="d-flex justify-content-between mb-4">
+          <h5 class="fw-bold">Total</h5>
+          <h5 id="cart-total" class="fw-bold text-warning">₹0</h5>
+        </div>
+        <button class="btn btn-checkout w-100 mb-3" onclick="checkout()">Proceed to Payment</button>
+        <a href="index.html" class="btn btn-outline-light w-100 rounded-pill">Continue Shopping</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="src/script.js"></script>
+<script>
+  // Initial load
+  loadCartPage();
+</script>
+
+</body>
+</html>

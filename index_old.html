@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Royal Bite | Premium Food Experience</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark custom-navbar">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="#">👑 Royal Bite</a>
+
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto align-items-center">
+
+        <li><a class="nav-link" href="#home">Home</a></li>
+        <li><a class="nav-link" href="#menu">Menu</a></li>
+        <li><a class="nav-link" href="#about">About</a></li>
+        <li><a class="nav-link" href="#contact">Contact</a></li>
+
+        <li><a class="nav-link" href="cart.html">🛒 Cart Page</a></li>
+
+        <!-- Cart Dropdown -->
+        <li class="nav-item dropdown ms-3">
+          <a class="nav-link position-relative" href="#" id="cartBtn" data-bs-toggle="dropdown">
+            🛒 <span id="cart-count" class="badge bg-danger rounded-pill">0</span>
+          </a>
+
+          <ul class="dropdown-menu dropdown-menu-end p-3 shadow-lg bg-dark border-secondary" style="width:320px; min-height: 100px;">
+            <h6 class="text-white mb-3">🛒 Your Cart</h6>
+            <div id="cart-items" style="max-height: 300px; overflow-y: auto;">
+              <!-- Items will be injected by script.js -->
+            </div>
+            <hr class="bg-secondary">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h6 id="cart-total" class="text-warning mb-0">Total: ₹0</h6>
+            </div>
+            <button class="btn btn-success w-100 fw-bold" onclick="checkout()">Checkout Now</button>
+            <a href="cart.html" class="btn btn-link btn-sm w-100 text-secondary mt-1">View Full Cart</a>
+          </ul>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section id="home" class="hero text-center text-white d-flex align-items-center justify-content-center">
+  <div class="overlay"></div>
+
+  <div class="content">
+    <h1>🔥 Taste the Magic</h1>
+    <p>Fresh • Delicious • Fast Delivery</p>
+    <button class="btn btn-warning btn-lg mt-3" onclick="orderNow()">
+  Order Now
+</button>
+  </div>
+</section>
+
+<!-- Menu -->
+<section id="menu" class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-5">Our Special Menu</h2>
+
+    <div class="row g-4">
+
+      <div class="col-md-4">
+        <div class="card">
+          <img src="https://media.istockphoto.com/id/519526540/photo/slice-of-hot-pizza.webp?a=1&b=1&s=612x612&w=0&k=20&c=zvbdjsyttIvzgpvFDylpQLP9erEeEiogF0V2ti2k-gU=">
+          <div class="card-body text-center">
+            <h5>Pizza</h5>
+            <p>Loaded Cheese Blast</p>
+            <a href="pizza.html" class="btn btn-danger">View More</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1606149059549-6042addafc5a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nzh8fGJ1cmdlcnxlbnwwfHwwfHx8MA%3D%3D">
+          <div class="card-body text-center">
+            <h5>Burger</h5>
+            <p>Ultimate Juicy Bite</p>
+            <a href="burger.html" class="btn btn-danger">View More</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1652480191212-13ecee3ec66b?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTM2fHxwYXN0YXxlbnwwfHwwfHx8MA%3D%3D">
+          <div class="card-body text-center">
+            <h5>Pasta</h5>
+            <p>Italian Creamy Delight</p>
+            <a href="pasta.html" class="btn btn-danger">View More</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- About Us Section -->
+<section id="about" class="about-section py-5">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-6 mb-4 mb-md-0">
+        <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600&h=600&fit=crop" class="img-fluid rounded-circle shadow-lg border border-warning p-2" alt="Our Heritage">
+      </div>
+      <div class="col-md-6 text-white">
+        <h6 class="text-warning text-uppercase fw-bold mb-2">Our Heritage</h6>
+        <h2 class="display-5 fw-bold mb-4">A Royal Culinary Journey</h2>
+        <p class="lead mb-4">At Royal Bite, we don't just serve food; we craft experiences fit for royalty. Every dish is a masterpiece, prepared with the finest ingredients and a secret blend of spices passed down through generations.</p>
+        
+        <div class="row g-4">
+          <div class="col-6">
+            <div class="d-flex align-items-center">
+              <span class="display-6 text-warning me-3">👑</span>
+              <div>
+                <h5 class="mb-0">Royal Taste</h5>
+                <small class="text-light opacity-75">Authentic Flavors</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="d-flex align-items-center">
+              <span class="display-6 text-warning me-3">🌿</span>
+              <div>
+                <h5 class="mb-0">Pure Ingredients</h5>
+                <small class="text-light opacity-75">100% Organic</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="d-flex align-items-center">
+              <span class="display-6 text-warning me-3">👨‍🍳</span>
+              <div>
+                <h5 class="mb-0">Master Chefs</h5>
+                <small class="text-light opacity-75">Expert Craftsmen</small>
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="d-flex align-items-center">
+              <span class="display-6 text-warning me-3">🚀</span>
+              <div>
+                <h5 class="mb-0">Fast Delivery</h5>
+                <small class="text-light opacity-75">Fresh to Door</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-5 bg-dark">
+  <div class="container text-white">
+    <h2 class="text-center mb-5 fw-bold text-warning">Get In Touch</h2>
+    
+    <div class="row g-5">
+      <!-- Contact Info -->
+      <div class="col-md-5">
+        <div class="contact-info-card p-4 rounded shadow-lg bg-secondary">
+          <h4 class="mb-4">Contact Information</h4>
+          <div class="d-flex align-items-center mb-3">
+            <span class="fs-3 me-3 text-warning">📍</span>
+            <p class="mb-0">123 Royal Street, Culinary Heights, Gujarat</p>
+          </div>
+          <div class="d-flex align-items-center mb-3">
+            <span class="fs-3 me-3 text-warning">📞</span>
+            <p class="mb-0">+91 98765 43210</p>
+          </div>
+          <div class="d-flex align-items-center mb-4">
+            <span class="fs-3 me-3 text-warning">✉️</span>
+            <p class="mb-0">contact@royalbite.com</p>
+          </div>
+          
+          <hr class="bg-light">
+          
+          <h5 class="mt-4 mb-3">Follow Us</h5>
+          <div class="d-flex gap-3">
+            <a href="#" class="social-icon" title="Instagram"><i class="bi bi-instagram fs-4"></i></a>
+            <a href="#" class="social-icon" title="Facebook"><i class="bi bi-facebook fs-4"></i></a>
+            <a href="#" class="social-icon" title="Twitter"><i class="bi bi-twitter-x fs-4"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="col-md-7">
+        <form class="contact-form p-4 rounded shadow-lg bg-secondary">
+          <p class="text-light mb-4">Have a question or feedback? Send us a message and our royal team will get back to you shortly.</p>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label small text-warning fw-bold">Full Name</label>
+              <input type="text" class="form-control bg-dark text-white border-secondary" placeholder="e.g. Rahul Sharma" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label small text-warning fw-bold">Email Address</label>
+              <input type="email" class="form-control bg-dark text-white border-secondary" placeholder="e.g. name@example.com" required>
+            </div>
+            <div class="col-12">
+              <label class="form-label small text-warning fw-bold">Subject</label>
+              <input type="text" class="form-control bg-dark text-white border-secondary" placeholder="How can we help you?">
+            </div>
+            <div class="col-12">
+              <label class="form-label small text-warning fw-bold">Your Message</label>
+              <textarea class="form-control bg-dark text-white border-secondary" rows="5" placeholder="Write your message here..." required></textarea>
+            </div>
+            <div class="col-12 mt-4">
+              <button type="submit" class="btn btn-warning w-100 fw-bold py-3">Send Royal Message</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-dark text-white text-center py-3">
+  © 2026 Royal Bite | Designed with Passion
+</footer>
+
+<script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

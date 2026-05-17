@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pasta Menu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="src/pasta.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+
+<body class="bg-dark text-white">
+
+
+<div class="container py-5">
+  <div class="row justify-content-center">
+
+    <!-- MENU ITEMS (GRID LAYOUT) -->
+    <div class="col-md-12">
+      <!-- Top Navigation Category Switcher -->
+      <div class="text-center mb-4 top-nav-wrapper">
+        <div class="d-flex justify-content-center align-items-center gap-2 flex-wrap mb-4">
+          <a href="index.html" class="btn btn-home px-3 py-2 fw-bold shadow">🏠 Home</a>
+          <a href="pizza.html" class="btn btn-outline-warning px-3 py-2 fw-bold shadow">🍕 Pizza Kingdom</a>
+          <a href="burger.html" class="btn btn-outline-warning px-3 py-2 fw-bold shadow">🍔 Burger Empire</a>
+        </div>
+        
+        <!-- Search Bar -->
+        <div class="search-container mx-auto position-relative" style="max-width: 500px;">
+          <div class="input-group">
+            <span class="input-group-text bg-transparent border-warning text-warning"><i class="bi bi-search"></i></span>
+            <input type="text" id="menuSearch" class="form-control bg-transparent border-warning text-white" placeholder="Search for your favorite pasta..." onkeyup="filterMenu()">
+          </div>
+          <div id="searchResults" class="search-results shadow-lg"></div>
+        </div>
+      </div>
+
+      <h2 class="mb-5 text-center text-warning fw-bold display-4">🍝 Our Special Pastas</h2>
+
+      <div class="row g-4">
+        <!-- Pasta Item 1 -->
+        <div class="col-md-4">
+          <div class="card pizza-card h-100 shadow-lg">
+            <img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=400&h=300&fit=crop" class="card-img-top" alt="White Sauce Pasta">
+            <div class="card-body text-center">
+              <h5 class="card-title text-white fw-bold mb-2">White Sauce Pasta</h5>
+              <p class="card-text text-warning fs-5">₹179</p>
+              <button onclick="addToCart('White Sauce Pasta', 179, 'https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=400&h=300&fit=crop')" class="btn btn-danger w-100 fw-bold">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pasta Item 2 -->
+        <div class="col-md-4">
+          <div class="card pizza-card h-100 shadow-lg">
+            <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=400&h=300&fit=crop" class="card-img-top" alt="Red Sauce Pasta">
+            <div class="card-body text-center">
+              <h5 class="card-title text-white fw-bold mb-2">Red Sauce Pasta</h5>
+              <p class="card-text text-warning fs-5">₹169</p>
+              <button onclick="addToCart('Red Sauce Pasta', 169, 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=400&h=300&fit=crop')" class="btn btn-danger w-100 fw-bold">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pasta Item 3 -->
+        <div class="col-md-4">
+          <div class="card pizza-card h-100 shadow-lg">
+            <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=400&h=300&fit=crop" class="card-img-top" alt="Penne Arrabiata">
+            <div class="card-body text-center">
+              <h5 class="card-title text-white fw-bold mb-2">Penne Arrabiata</h5>
+              <p class="card-text text-warning fs-5">₹199</p>
+              <button onclick="addToCart('Penne Arrabiata', 199, 'https://images.unsplash.com/photo-1563379926898-05f4575a45d8?w=400&h=300&fit=crop')" class="btn btn-danger w-100 fw-bold">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pasta Item 4 -->
+        <div class="col-md-4">
+          <div class="card pizza-card h-100 shadow-lg">
+            <img src="https://images.unsplash.com/photo-1473093226795-af9932fe5856?w=400&h=300&fit=crop" class="card-img-top" alt="Pesto Cream Pasta">
+            <div class="card-body text-center">
+              <h5 class="card-title text-white fw-bold mb-2">Pesto Cream Pasta</h5>
+              <p class="card-text text-warning fs-5">₹219</p>
+              <button onclick="addToCart('Pesto Cream Pasta', 219, 'https://images.unsplash.com/photo-1473093226795-af9932fe5856?w=400&h=300&fit=crop')" class="btn btn-danger w-100 fw-bold">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pasta Item 5 -->
+        <div class="col-md-4">
+          <div class="card pizza-card h-100 shadow-lg">
+            <img src="https://images.unsplash.com/photo-1622973536968-3ead9e780960?w=400&h=300&fit=crop" class="card-img-top" alt="Pink Sauce Pasta">
+            <div class="card-body text-center">
+              <h5 class="card-title text-white fw-bold mb-2">Pink Sauce Pasta</h5>
+              <p class="card-text text-warning fs-5">₹209</p>
+              <button onclick="addToCart('Pink Sauce Pasta', 209, 'https://images.unsplash.com/photo-1622973536968-3ead9e780960?w=400&h=300&fit=crop')" class="btn btn-danger w-100 fw-bold">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pasta Item 6 -->
+        <div class="col-md-4">
+          <div class="card pizza-card h-100 shadow-lg">
+            <img src="https://images.unsplash.com/photo-1558985250-27a406d64cb3?w=400&h=300&fit=crop" class="card-img-top" alt="Alfredo Mushroom">
+            <div class="card-body text-center">
+              <h5 class="card-title text-white fw-bold mb-2">Alfredo Mushroom</h5>
+              <p class="card-text text-warning fs-5">₹239</p>
+              <button onclick="addToCart('Alfredo Mushroom', 239, 'https://images.unsplash.com/photo-1558985250-27a406d64cb3?w=400&h=300&fit=crop')" class="btn btn-danger w-100 fw-bold">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pasta Item 7 -->
+        <div class="col-md-4">
+          <div class="card pizza-card h-100 shadow-lg">
+            <img src="https://images.unsplash.com/photo-1555072956-7758afb20e8f?w=400&h=300&fit=crop" class="card-img-top" alt="Creamy Cheese Pasta">
+            <div class="card-body text-center">
+              <h5 class="card-title text-white fw-bold mb-2">Creamy Cheese Pasta</h5>
+              <p class="card-text text-warning fs-5">₹229</p>
+              <button onclick="addToCart('Creamy Cheese Pasta', 229, 'https://images.unsplash.com/photo-1555072956-7758afb20e8f?w=400&h=300&fit=crop')" class="btn btn-danger w-100 fw-bold">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pasta Item 8 -->
+        <div class="col-md-4">
+          <div class="card pizza-card h-100 shadow-lg">
+            <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=400&h=300&fit=crop" class="card-img-top" alt="Spicy Garlic Pasta">
+            <div class="card-body text-center">
+              <h5 class="card-title text-white fw-bold mb-2">Spicy Garlic Pasta</h5>
+              <p class="card-text text-warning fs-5">₹189</p>
+              <button onclick="addToCart('Spicy Garlic Pasta', 189, 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=400&h=300&fit=crop')" class="btn btn-danger w-100 fw-bold">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pasta Item 9 -->
+        <div class="col-md-4">
+          <div class="card pizza-card h-100 shadow-lg">
+            <img src="https://images.unsplash.com/photo-1574894709920-11b28e7367e3?w=400&h=300&fit=crop" class="card-img-top" alt="Vegetable Lasagna Style">
+            <div class="card-body text-center">
+              <h5 class="card-title text-white fw-bold mb-2">Vegetable Lasagna Style</h5>
+              <p class="card-text text-warning fs-5">₹259</p>
+              <button onclick="addToCart('Vegetable Lasagna Style', 259, 'https://images.unsplash.com/photo-1574894709920-11b28e7367e3?w=400&h=300&fit=crop')" class="btn btn-danger w-100 fw-bold">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pasta Item 10 -->
+        <div class="col-md-4">
+          <div class="card pizza-card h-100 shadow-lg">
+            <img src="https://images.unsplash.com/photo-1543339308-43e59d6b73a6?w=400&h=300&fit=crop" class="card-img-top" alt="Mac & Cheese Classic">
+            <div class="card-body text-center">
+              <h5 class="card-title text-white fw-bold mb-2">Mac & Cheese Classic</h5>
+              <p class="card-text text-warning fs-5">₹159</p>
+              <button onclick="addToCart('Mac & Cheese Classic', 159, 'https://images.unsplash.com/photo-1543339308-43e59d6b73a6?w=400&h=300&fit=crop')" class="btn btn-danger w-100 fw-bold">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pasta Item 11 -->
+        <div class="col-md-4">
+          <div class="card pizza-card h-100 shadow-lg">
+            <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=400&h=300&fit=crop" class="card-img-top" alt="Spaghetti Aglio e Olio">
+            <div class="card-body text-center">
+              <h5 class="card-title text-white fw-bold mb-2">Spaghetti Aglio e Olio</h5>
+              <p class="card-text text-warning fs-5">₹249</p>
+              <button onclick="addToCart('Spaghetti Aglio e Olio', 249, 'https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=400&h=300&fit=crop')" class="btn btn-danger w-100 fw-bold">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pasta Item 12 -->
+        <div class="col-md-4">
+          <div class="card pizza-card h-100 shadow-lg">
+            <img src="https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?w=400&h=300&fit=crop" class="card-img-top" alt="Baked Ziti Veggie">
+            <div class="card-body text-center">
+              <h5 class="card-title text-white fw-bold mb-2">Baked Ziti Veggie</h5>
+              <p class="card-text text-warning fs-5">₹219</p>
+              <button onclick="addToCart('Baked Ziti Veggie', 219, 'https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb?w=400&h=300&fit=crop')" class="btn btn-danger w-100 fw-bold">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Navigation Options -->
+    <div class="col-md-10 mt-5">
+      <div class="card bg-dark border-warning p-4 text-center shadow-lg">
+        <h4 class="text-warning mb-3">Done with your selection?</h4>
+        <div class="d-flex flex-wrap justify-content-center gap-3">
+          <a href="cart.html" class="btn btn-outline-light btn-lg px-4">🛒 View Full Cart</a>
+          <a href="payment.html" class="btn btn-success btn-lg px-5 fw-bold">💳 Proceed to Payment</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="src/script.js"></script>
+</body>
+</html>

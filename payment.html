@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Secure Payment | Royal Bite</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="src/payment.css">
+</head>
+<body>
+
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-5">
+      <div class="payment-card p-4 shadow-lg text-center">
+        <h2 class="mb-4">💳 Checkout</h2>
+        
+        <div class="mb-4">
+          <h5 class="text-secondary">Total Amount</h5>
+          <h1 id="pay-total" class="text-warning">₹0</h1>
+        </div>
+
+        <div class="text-start mb-3">
+          <label class="form-label text-secondary small">Delivery Details</label>
+          <input type="text" id="cust-name" class="form-control border-secondary mb-2" placeholder="Your Full Name">
+          <input type="text" id="cust-phone" class="form-control border-secondary mb-2" placeholder="Phone Number">
+          <textarea id="cust-address" class="form-control border-secondary" placeholder="Delivery Address"></textarea>
+        </div>
+
+        <div class="text-start mb-4">
+          <label class="form-label text-warning fw-bold mb-3">Choose Payment Method</label>
+          <div class="d-flex flex-column gap-2">
+            <div class="form-check p-3 border border-secondary rounded bg-dark">
+              <input class="form-check-input ms-0 me-3" type="radio" name="payMethod" id="payOnline" value="online" checked onchange="togglePaymentBtn()">
+              <label class="form-check-label text-white" for="payOnline">
+                💳 Online Payment (Razorpay)
+              </label>
+            </div>
+            <div class="form-check p-3 border border-secondary rounded bg-dark">
+              <input class="form-check-input ms-0 me-3" type="radio" name="payMethod" id="payCOD" value="cod" onchange="togglePaymentBtn()">
+              <label class="form-check-label text-white" for="payCOD">
+                💵 Cash on Delivery (COD)
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <button id="mainPayBtn" class="btn btn-pay btn-lg w-100 mb-3" onclick="processPayment()">Pay with Razorpay</button>
+        <p class="small text-secondary">Secure SSL Encrypted Payment</p>
+
+        <hr class="border-secondary">
+        <a href="cart.html" class="btn btn-outline-light btn-sm w-100">⬅ Back to Cart</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Razorpay Script -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="src/script.js"></script>
+
+<script>
+  let totalAmount = 0;
+
+  function loadTotal() {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    totalAmount = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+    document.getElementById("pay-total").innerText = "₹" + totalAmount;
+  }
+
+  function togglePaymentBtn() {
+    const method = document.querySelector('input[name="payMethod"]:checked').value;
+    const btn = document.getElementById("mainPayBtn");
+    if (method === "online") {
+      btn.innerText = "Pay with Razorpay";
+      btn.className = "btn btn-pay btn-lg w-100 mb-3";
+    } else {
+      btn.innerText = "Confirm COD Order";
+      btn.className = "btn btn-warning btn-lg w-100 mb-3 text-dark fw-bold";
+    }
+  }
+
+  function processPayment() {
+    const name = document.getElementById("cust-name").value;
+    const phone = document.getElementById("cust-phone").value;
+    const address = document.getElementById("cust-address").value;
+    const method = document.querySelector('input[name="payMethod"]:checked').value;
+
+    if (!name || !phone || !address) {
+      alert("Please fill all details! ✍️");
+      return;
+    }
+
+    if (method === "online") {
+      startRazorpay();
+    } else {
+      completeOrder("COD_MODE");
+    }
+  }
+
+  function startRazorpay() {
+    // Razorpay Options
+    var options = {
+      "key": "rzp_test_YOUR_KEY_HERE",
+      "amount": totalAmount * 100,
+      "currency": "INR",
+      "name": "Royal Bite",
+      "description": "Food Order Payment",
+      "image": "https://cdn-icons-png.flaticon.com/512/3170/3170733.png",
+      "handler": function (response) {
+        completeOrder(response.razorpay_payment_id);
+      },
+      "prefill": {
+        "name": document.getElementById("cust-name").value,
+        "contact": document.getElementById("phone")
+      },
+      "theme": {
+        "color": "#ffc107"
+      }
+    };
+
+    var rzp1 = new Razorpay(options);
+    rzp1.on('payment.failed', function (response){
+      alert("Payment Failed! ❌ " + response.error.description);
+    });
+    rzp1.open();
+  }
+
+  async function completeOrder(paymentId) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const method = document.querySelector('input[name="payMethod"]:checked').value;
+    
+    const orderData = {
+      customer: document.getElementById("cust-name").value,
+      phone: document.getElementById("cust-phone").value,
+      address: document.getElementById("cust-address").value,
+      items: cart,
+      total: totalAmount,
+      paymentId: paymentId,
+      method: method,
+      date: new Date().toISOString(),
+      status: method === "online" ? "Paid" : "Pending (COD)"
+    };
+
+    // Save to Database (Firebase/Mock)
+    await saveOrderToDB(orderData);
+
+    window.location.href = "order-success.html";
+  }
+
+  window.onload = loadTotal;
+</script>
+
+</body>
+</html>

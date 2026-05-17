@@ -1,0 +1,100 @@
+/* Payment Page Styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
+              url('https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1600&h=900&fit=crop') no-repeat center center fixed !important;
+  background-size: cover !important;
+  color: #fff;
+}
+
+.payment-card {
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+}
+
+.btn-pay {
+  background: #28a745;
+  border: none;
+  font-weight: 600;
+  transition: 0.3s;
+  border-radius: 10px;
+}
+
+.btn-pay:hover {
+  background: #218838;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+}
+
+.form-control {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: #fff !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 12px;
+  padding: 12px 15px;
+}
+
+.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.form-control:focus {
+  border-color: #ffc107 !important;
+  background-color: rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 0 15px rgba(255, 193, 7, 0.2) !important;
+  color: #fff !important;
+}
+
+.form-check-input {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.form-check-input:checked {
+  background-color: #ffc107;
+  border-color: #ffc107;
+}
+
+/* --- Responsive Media Queries --- */
+@media (max-width: 767.98px) {
+  .payment-card {
+    padding: 20px !important;
+    margin: 10px;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 375px) {
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  .display-4 {
+    font-size: 2rem !important;
+  }
+
+  .btn-pay {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .payment-card {
+    padding: 15px !important;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  .form-label {
+    font-size: 0.8rem;
+  }
+}
